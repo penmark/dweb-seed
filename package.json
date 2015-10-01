@@ -18,7 +18,6 @@
     "gulp-header": "^1.7.1",
     "gulp-imagemin": "^2.3.0",
     "gulp-jade": "^1.1.0",
-    "gulp-karma": "0.0.4",
     "gulp-protractor": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.4",
@@ -48,7 +47,8 @@
   },
   "private": true,
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "postinstall": "bower install"
   },
   "dependencies": {
     "angular": "^1.5.0-beta.0",
@@ -56,9 +56,6 @@
     "angular-resource": "^1.5.0-beta.0",
     "angular-ui-bootstrap": "^0.13.4",
     "angular-ui-router": "^0.2.15",
-    "bootstrap": "^3.3.5",
-    "bootstrap-sass": "^3.3.5",
-    "font-awesome": "^4.4.0",
     "moment": "^2.10.6"
   }
 }
