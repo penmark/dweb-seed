@@ -2,6 +2,7 @@ doctype html
 html(ng-strict-di ng-app="dweb")
   head
     meta(charset="utf-8")
+    base(href="/")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="description" content="")
     meta(name="viewport" content="width=device-width, initial-scale=1")
@@ -9,8 +10,8 @@ html(ng-strict-di ng-app="dweb")
     link(rel="stylesheet" href="bundle.css")
   body
     .container
-      h1
-        i.fa.fa-cc-mastercard
-        | DepartmentWeb 2000
+      h1.page-header
+        i.fa.fa-hand-spock-o
+        |&nbsp;DepartmentWeb 2000
       ui-view
     script(src="bundle.js")

@@ -1,2 +1,2 @@
-import dummyModule from './dummy'
-export default {dummyModule}
+import userModule from './user'
+export default userModule

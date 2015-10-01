@@ -1,0 +1,15 @@
+section.user
+  h2 I am user.
+  p Go #[a(ui-sref="index") home].
+  h3 These are the users:
+  .row: .col-xs-2: input.form-control.input-sm(type="search", ng-model="filter", placeholder="Filtrera tabellen")
+  table.table.table-hover
+    thead: tr
+      th(ng-repeat="column in vm.columns", ng-click="vm.sort(column)")
+        | {{column.label}} 
+        i.fa(ng-if="vm.sort()==column", ng-class="column.reverse ? 'fa-arrow-up' : 'fa-arrow-down'")
+    tbody
+      tr(ng-repeat="user in vm.users | orderBy: vm.sort().key : vm.sort().reverse | filter: filter", ng-click="vm.details(user)")
+        td: a(href, ui-sref="user.detail({id: user.id})") {{user.username}}
+        td {{user.name}}
+        td {{user.email}}

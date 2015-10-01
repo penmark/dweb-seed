@@ -1,0 +1,24 @@
+.modal-header
+  button(type="button", class="close" ng-click="vm.close()") &times;
+  h4.modal-title {{vm.user.name}}
+.modal-body
+  dl.dl-horizontal
+    dt E-post
+    dd: a(ng-href="mailto:{{vm.user.email}}") {{vm.user.email}}
+    dt Användarnamn
+    dd {{vm.user.username}}
+    dt Adress
+    dd
+      | {{vm.user.address.street}}, {{vm.user.address.suite}}
+      br
+      | {{vm.user.address.zipcode}} {{vm.user.address.city}}
+    dt Telefonnummer
+    dd {{vm.user.phone}}
+    dt Webbsida
+    dd: a(ng-href="{{'http://' + vm.user.website}}") {{vm.user.website}}
+    dt Företag
+    dd: span(tooltip="{{vm.user.company.catchPhrase}}")
+      | {{vm.user.company.name}} &ndash;&nbsp; #[i: {{vm.user.company.bs}}]
+.modal-footer
+  button(type="button" class="btn btn-default" ng-click="vm.close()") Stäng
+

@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/.editorconfig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.gitignore" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gulpfile.babel.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/gulpfile.babel.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/gulpfile.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/package.json" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/app.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/components/dummy/dummy.controller.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/components/dummy/dummy.directive.jade" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/components/dummy/dummy.directive.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/components/dummy/dummy.filter.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/components/dummy/dummy.sass" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/components/dummy/dummy.service.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/components/dummy/index.jade" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/components/dummy/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/components/index.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/index.sass" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/index.jade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.controller.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.directive.jade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.directive.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.directive.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.filter.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.filter.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.jade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.sass" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/user.service.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/users.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/components/user/users.controller.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/main/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/main/main.config.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/main/main.constants.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/main/main.module.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/main/main.run.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/main/main.states.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/manifest.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/manifest.webapp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/templates/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/index.jade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/sass/_imports.sass" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/sass/_init.sass" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/sass/_theme.sass" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/sass/_variables.sass" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/sass/index.sass" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/karma.conf.js" charset="UTF-8" />
   </component>
 </project>

@@ -1,0 +1,25 @@
+{
+  "name": "dweb",
+  "version": "0.0.0",
+  "authors": [
+    "Pontus Enmark <pontus@wka.se>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "animate.css": "~3.4.0"
+  },
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "font-awesome": "~4.4.0"
+  }
+}

@@ -1,5 +1,7 @@
 node_modules
+bower_components
 dist
 .tmp
 .idea/workspace.xml
 .idea/tasks.xml
+src/app/templates
