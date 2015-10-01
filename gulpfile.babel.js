@@ -66,7 +66,7 @@ gulp.task('browserify', ['templatecache'], () => compile())
 gulp.task('watchify', ['templatecache'], () => compile(true))
 
 gulp.task('templatecache', ['jade'], () => {
-  gulp.src('./.tmp/templates/**/*.html')
+  return gulp.src('./.tmp/templates/**/*.html')
     .pipe(templateCache('index.js', {standalone: true, module: 'dweb.templates'}))
     .pipe(header('"use strict"\nimport angular from "angular"\nexport default "dweb.templates"\n'))
     .pipe(gulp.dest('./src/app/templates'))
@@ -82,21 +82,17 @@ gulp.task('jade', () => {
     .pipe(size({title: 'templates'}))
 })
 
-const startServer = (cb=_.noop, open=false) => {
+gulp.task('watch', ['watchify', 'templatecache', 'sass', 'assets'], () => {
   browserSync.init({
     server: {
       baseDir: './dist',
       middleware: [modRewrite(['^/api/(.*)$ http://jsonplaceholder.typicode.com/$1 [P]']), spa()]
     },
-    open: open
-  }, cb)
-}
-
-gulp.task('watch', ['watchify', 'templatecache', 'sass', 'assets'], (done) => {
-  startServer(() => {
-    gulp.watch('src/**/*.jade', ['templatecache'])
-    gulp.watch(['src/app/**/*.{sass,scss}', 'src/sass/**/*.{sass,scss}'], ['sass'])
-  }, true)
+    logPrefix: 'WATCH',
+    open: true
+  })
+  gulp.watch('src/**/*.jade', ['templatecache'])
+  gulp.watch(['src/app/**/*.{sass,scss}', 'src/sass/**/*.{sass,scss}'], ['sass'])
 })
 
 gulp.task('sass', () => {
@@ -159,17 +155,29 @@ gulp.task('test:watch', (done) => {
 })
 
 gulp.task('test:e2e:update-webdriver', protractor.webdriver_update)
+
 gulp.task('test:e2e', ['test:e2e:update-webdriver'], (done) => {
-  startServer(() => {
+  const runProtractor = (err, bs) => {
+    const baseUrl = `http://localhost:${bs.options.get('port')}`
     gulp.src([], {read: false})
       .pipe(protractor.protractor({
-        configFile: 'src/test/protractor.conf.js'
+        configFile: 'src/test/protractor.conf.js',
+        args: ['--baseUrl', baseUrl]
       }))
       .on('error', handleError)
       .on('end', function () {
-        browserSync.exit()
         done()
+        browserSync.exit()
       })
-  }, false)
+  }
+  browserSync.init({
+    server: {
+      baseDir: './dist',
+      middleware: [modRewrite(['^/api/(.*)$ http://jsonplaceholder.typicode.com/$1 [P]']), spa()]
+    },
+    open: false,
+    ui: false,
+    logPrefix: 'E2E'
+  }, runProtractor)
 })
 gulp.task('build', ['images', 'sass', 'jade', 'browserify', 'assets'])

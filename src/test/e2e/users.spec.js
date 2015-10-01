@@ -22,4 +22,10 @@ describe('Users page', () => {
     page.filter.sendKeys('bret')
     expect(page.rows.count()).toEqual(1)
   })
+
+  it('should sort users', () => {
+    expect(page.rows.first().element(by.css('td > a')).getText()).toEqual('Antonette')
+    page.th.first().click()
+    expect(page.rows.first().element(by.css('td > a')).getText()).not.toEqual('Antonette')
+  })
 })
