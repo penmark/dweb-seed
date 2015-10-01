@@ -126,7 +126,10 @@ gulp.task('clean', () => {
 })
 
 gulp.task('fonts', () => {
-  return gulp.src(['src/assets/fonts/**/*', 'node_modules/font-awesome/fonts/*'])
+  return gulp.src([
+      'src/assets/fonts/**/*', 'bower_components/font-awesome/fonts/*',
+      'bower_components/bootstrap-sass/assets/fonts/bootstrap/*'
+    ])
     .pipe(gulp.dest('./dist/assets/fonts'))
     .pipe(size({title: 'fonts'}))
 })
