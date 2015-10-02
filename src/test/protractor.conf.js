@@ -6,15 +6,12 @@ exports.config = {
   framework: 'jasmine2',
   multiCapabilities: [{
     browserName: 'chrome'
-  }, {
-    browserName: 'firefox'
   }
   //  , { browserName: 'internet explorer'} // See https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver
   ],
   troubleshoot: true,
   rootElement: 'html',
   baseUrl: 'http://localhost:3000',
-
   // Spec patterns are relative to the current working directory when
   // protractor is called.
   specs: ['e2e/**/*.spec.js'],

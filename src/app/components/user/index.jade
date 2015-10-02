@@ -12,4 +12,4 @@ section.user
       tr(ng-repeat="user in vm.users | orderBy: vm.sort().key : vm.sort().reverse | filter: filter", ng-click="vm.details(user)")
         td: a(href, ui-sref="user.detail({id: user.id})") {{user.username}}
         td {{user.name}}
-        td {{user.email}}
+        td: email(email="{{user.email}}")
