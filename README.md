@@ -11,6 +11,7 @@ I konsollen:
     git clone https://github.com/penmark/dweb-seed.git
     cd dweb-seed
     npm install -g bower
+    npm install -g gulp
     npm install
     gulp watch
 
