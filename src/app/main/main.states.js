@@ -4,7 +4,13 @@ const StateConfig = /*@ngInject*/ ($stateProvider, $urlRouterProvider, $location
 
   $stateProvider.state('index', {
     url: '/',
-    template: '<div class="index"><i>I am index.</i> <a ui-sref="user">Go to users</a>.</div>'
+    templateUrl: 'app/components/index/index.html',
+    controllerAs: 'vm',
+    controller: /*@ngInject*/ function (notify) {
+      this.notify = function (level) {
+        notify[level](this.message, `Index says ${level}`, 5)
+      }
+    }
   }).state('user', {
     url: '/user',
     templateUrl: 'app/components/user/index.html',

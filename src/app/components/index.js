@@ -1,2 +1,3 @@
 import userModule from './user'
-export default userModule
+import notifyModule from './notify'
+export default [userModule, notifyModule]
