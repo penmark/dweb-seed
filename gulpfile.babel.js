@@ -40,7 +40,7 @@ const compile = function (watch=false) {
   var bundler = browserify('./src/app/index.js', {debug: true}) // change to false in prod
     .transform(babelify)
     .transform(annotate)
-    //.transform({global: true}, uglifyify)
+    .transform({global: true}, uglifyify)
 
   const rebundle = () => {
     return bundler.bundle()
@@ -97,14 +97,14 @@ gulp.task('watch', ['watchify', 'templatecache', 'sass', 'assets'], () => {
 
 gulp.task('sass', () => {
   return gulp.src('src/sass/index.sass')
-    //.pipe(sourcemaps.init())
+    .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: ['./bower_components']
     }).on('error', sass.logError))
     .pipe(autoprefixer('last 1 version'))
-    //.pipe(csso())
+    .pipe(csso())
     .pipe(rename('bundle.css'))
-    //.pipe(sourcemaps.write('.'))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist'))
     .pipe(size({title: 'stylesheet'}))
     .pipe(browserSync.stream({match: '**/*.css'}))

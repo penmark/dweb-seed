@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/.editorconfig" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/.gitignore" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gulpfile.babel.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/package.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/components/index.js" charset="UTF-8" />
@@ -31,7 +32,6 @@
     <file url="file://$PROJECT_DIR$/src/app/main/main.states.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/manifest.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/manifest.webapp" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/templates/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/index.jade" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/sass/_imports.sass" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/sass/_init.sass" charset="UTF-8" />
