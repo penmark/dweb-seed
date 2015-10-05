@@ -12,9 +12,10 @@ const notifyDirective = /*@ngInject*/ ($log, $rootScope, $templateCache, $compil
         warning: 'alert-warning'
       }
       scope.notifyClass = (level) => classMap[level]
-      const dismiss = (messageElement) => {
-        $animate.leave(messageElement).then(() => {
-          notifications.splice(notifications.indexOf(messageElement), 1)
+
+      const dismiss = (notifyElem) => {
+        $animate.leave(notifyElem).then(() => {
+          notifications.splice(notifications.indexOf(notifyElem), 1)
           $log.debug('notifications', notifications)
         })
       }

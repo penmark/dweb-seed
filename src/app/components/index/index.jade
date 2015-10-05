@@ -1,9 +1,12 @@
 p.index: i I am index.
   a(ui-sref="user") Go to users
-p
-  input(type="text" ng-model="vm.message" class="form-control" placeholder="Write a message")
-  br
-  button.btn.btn-info(ng-click="vm.notify('info')") Info
-  button.btn.btn-warning(ng-click="vm.notify('warning')") Warning
-  button.btn.btn-danger(ng-click="vm.notify('danger')") Error
-  button.btn.btn-success(ng-click="vm.notify('success')") Success
+.row
+  .col-sm-4
+    input.form-control(type="text" ng-model="vm.message" placeholder="Notification text")
+  .col-sm-3
+    input.form-control(type="text" ng-model="vm.timeout" placeholder="Notification timeout (in seconds)")
+  .col-sm-5
+    button.btn.btn-info(ng-click="vm.notify('info')") Info
+    button.btn.btn-warning(ng-click="vm.notify('warning')") Warning
+    button.btn.btn-danger(ng-click="vm.notify('error')") Error
+    button.btn.btn-success(ng-click="vm.notify('success')") Success

@@ -3,11 +3,9 @@ import gulp from 'gulp'
 import browserify from 'browserify'
 import babelify from 'babelify'
 import watchify from 'watchify'
-import uglifyify from 'uglifyify'
+import uglify from 'gulp-uglify'
 import buffer from 'vinyl-buffer'
 import source from 'vinyl-source-stream'
-import transform from 'vinyl-transform'
-import exorcist from 'exorcist'
 import annotate from 'browserify-ngannotate'
 import templateCache from 'gulp-angular-templatecache'
 import header from 'gulp-header'
@@ -20,9 +18,14 @@ import imagemin from 'gulp-imagemin'
 import sourcemaps from 'gulp-sourcemaps'
 import autoprefixer from 'gulp-autoprefixer'
 import gutil from 'gulp-util'
-import csso from 'gulp-csso'
+import minifyCss from 'gulp-minify-css'
+import minifyHtml from 'gulp-minify-html'
+import rev from 'gulp-rev'
+import revReplace from 'gulp-rev-replace'
+import gulpIf from 'gulp-if'
 import karma from 'karma'
 import protractor from 'gulp-protractor'
+import runSequence from 'run-sequence'
 import bs from 'browser-sync'
 import spa from 'connect-history-api-fallback'
 import modRewrite from 'connect-modrewrite'
@@ -31,23 +34,30 @@ import path from 'path'
 import _ from 'lodash'
 
 const browserSync = bs.create()
+const serverConfig = {
+  baseDir: './dist',
+  middleware: [modRewrite(['^/api/(.*)$ http://jsonplaceholder.typicode.com/$1 [P]']), spa()]
+}
 const handleError = function (err) {
   gutil.log(err)
   this.emit('end')
 }
 
+let prod = false
+
 const compile = function (watch=false) {
-  var bundler = browserify('./src/app/index.js', {debug: true}) // change to false in prod
+  var bundler = browserify('./src/app/index.js', {debug: !prod})
     .transform(babelify)
     .transform(annotate)
-    .transform({global: true}, uglifyify)
 
   const rebundle = () => {
     return bundler.bundle()
       .on('error', handleError)
       .pipe(source('bundle.js'))
       .pipe(buffer())
-      .pipe(transform(() => exorcist('./dist/bundle.js.map')))
+      .pipe(sourcemaps.init())
+      .pipe(gulpIf(prod, uglify()))
+      .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest('./dist'))
       .pipe(size({title: 'bundle.js'}))
       .pipe(browserSync.stream({once: true}))
@@ -75,19 +85,18 @@ gulp.task('templatecache', ['jade'], () => {
 gulp.task('jade', () => {
   gulp.src('./src/index.jade')
     .pipe(jade({pretty: true}))
+    .pipe(gulpIf(prod, minifyHtml()))
     .pipe(gulp.dest('./dist'))
   return gulp.src(['./src/app/**/*.jade'])
     .pipe(jade({pretty: true}))
+    .pipe(gulpIf(prod, minifyHtml()))
     .pipe(gulp.dest('./.tmp/templates/app'))
     .pipe(size({title: 'templates'}))
 })
 
 gulp.task('watch', ['watchify', 'templatecache', 'sass', 'assets'], () => {
   browserSync.init({
-    server: {
-      baseDir: './dist',
-      middleware: [modRewrite(['^/api/(.*)$ http://jsonplaceholder.typicode.com/$1 [P]']), spa()]
-    },
+    server: serverConfig,
     logPrefix: 'WATCH',
     open: true
   })
@@ -95,16 +104,27 @@ gulp.task('watch', ['watchify', 'templatecache', 'sass', 'assets'], () => {
   gulp.watch(['src/app/**/*.{sass,scss}', 'src/sass/**/*.{sass,scss}'], ['sass'])
 })
 
+gulp.task('serve:dist', ['dist'], () => {
+  browserSync.init({
+    server: serverConfig,
+    logPrefix: 'DIST',
+    open: true
+  })
+})
+
 gulp.task('sass', () => {
   return gulp.src('src/sass/index.sass')
-    .pipe(sourcemaps.init())
+    // Sourcemaps doesn't function well with minification
+    .pipe(gulpIf(!prod, sourcemaps.init()))
     .pipe(sass({
-      includePaths: ['./bower_components']
+      includePaths: ['./bower_components'],
+      sourceComments: !prod,
+      outputStyle: 'compact'
     }).on('error', sass.logError))
     .pipe(autoprefixer('last 1 version'))
-    .pipe(csso())
+    .pipe(gulpIf(prod, minifyCss()))
     .pipe(rename('bundle.css'))
-    .pipe(sourcemaps.write('.'))
+    .pipe(gulpIf(!prod, sourcemaps.write('./')))
     .pipe(gulp.dest('dist'))
     .pipe(size({title: 'stylesheet'}))
     .pipe(browserSync.stream({match: '**/*.css'}))
@@ -121,8 +141,8 @@ gulp.task('images', () => {
     .pipe(size({title: 'images'}))
 })
 
-gulp.task('clean', () => {
-  return del(['./dist'])
+gulp.task('clean', (done) => {
+  del(['./dist'], done)
 })
 
 gulp.task('fonts', () => {
@@ -174,13 +194,39 @@ gulp.task('test:e2e', ['test:e2e:update-webdriver'], (done) => {
       })
   }
   browserSync.init({
-    server: {
-      baseDir: './dist',
-      middleware: [modRewrite(['^/api/(.*)$ http://jsonplaceholder.typicode.com/$1 [P]']), spa()]
-    },
+    server: serverConfig,
     open: false,
     ui: false,
     logPrefix: 'E2E'
   }, runProtractor)
 })
-gulp.task('build', ['images', 'sass', 'jade', 'browserify', 'assets'])
+
+gulp.task('build', ['assets', 'sass', 'templatecache', 'browserify'])
+
+gulp.task('rev', ['browserify', 'sass'], () => {
+  const sources = ['./dist/bundle.js', './dist/bundle.css']
+  return gulp.src(sources)
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(rev())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./dist'))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest('./dist'))
+    //.pipe(del(sources))
+})
+
+gulp.task('rev-replace', ['rev'], () => {
+  return gulp.src('./dist/index.html')
+    .pipe(revReplace({
+      manifest: gulp.src('./dist/rev-manifest.json')
+    }))
+    .pipe(gulp.dest('./dist'))
+})
+
+gulp.task('mark-dist', (done) => {
+  prod = true
+  gutil.log(gutil.colors.magenta('Building minified distribution'))
+  done()
+})
+
+gulp.task('dist', ['mark-dist', 'assets', 'rev-replace'])

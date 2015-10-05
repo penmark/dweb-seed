@@ -8,7 +8,7 @@ const StateConfig = /*@ngInject*/ ($stateProvider, $urlRouterProvider, $location
     controllerAs: 'vm',
     controller: /*@ngInject*/ function (notify) {
       this.notify = function (level) {
-        notify[level](this.message, `Index says ${level}`, 5)
+        notify[level](this.message, `Index says ${level}`, this.timeout || 0)
       }
     }
   }).state('user', {

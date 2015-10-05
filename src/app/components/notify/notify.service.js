@@ -1,7 +1,7 @@
 'use strict'
 const messageService = /*@ngInject*/ ($rootScope, $log) => {
   const notify = (level, message, title, timeout) => {
-    $log.debug('notify', arguments)
+    $log.debug('notify', 'level:', level, 'message:', message, 'title:', title, 'timeout:', timeout)
     $rootScope.$emit('dweb.notify', {level: level, message: message, title: title, timeout: timeout})
   }
   return {
