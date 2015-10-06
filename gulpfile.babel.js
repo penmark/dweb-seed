@@ -225,7 +225,7 @@ gulp.task('rev-replace', ['rev'], () => {
 
 gulp.task('mark-dist', (done) => {
   prod = true
-  gutil.log(gutil.colors.magenta('Building minified distribution'))
+  gutil.log(gutil.colors.cyan.bold('Building minified distribution'))
   done()
 })
 
