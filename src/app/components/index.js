@@ -1,3 +1,9 @@
+import angular from 'angular'
 import userModule from './user'
 import notifyModule from './notify'
-export default {userModule, notifyModule}
+
+const componentModule = 'dweb.components'
+
+angular.module(componentModule, [userModule, notifyModule])
+
+export default componentModule

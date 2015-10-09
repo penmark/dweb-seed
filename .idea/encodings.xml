@@ -34,7 +34,6 @@
     <file url="file://$PROJECT_DIR$/src/app/main/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/main/main.config.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/main/main.constants.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/main/main.module.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/main/main.run.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/main/main.states.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/manifest.json" charset="UTF-8" />
