@@ -17,9 +17,5 @@ describe('Index page', () => {
     page.notifyTimeout.sendKeys('0.1')
     page.errorButton.click()
     expect(page.notification.isPresent()).toBeTruthy()
-    browser.wait(() => {
-      expect(page.notification.isPresent()).toBeFalsy()
-    }, 200)
-
   })
 })

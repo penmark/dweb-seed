@@ -98,7 +98,8 @@ gulp.task('watch', ['watchify', 'templatecache', 'sass', 'assets'], () => {
   browserSync.init({
     server: serverConfig,
     logPrefix: 'WATCH',
-    open: true
+    open: true,
+    scrollRestoreTechnique: 'cookie'
   })
   gulp.watch('src/**/*.jade', ['templatecache'])
   gulp.watch(['src/app/**/*.{sass,scss}', 'src/sass/**/*.{sass,scss}'], ['sass'])
@@ -197,7 +198,9 @@ gulp.task('test:e2e', ['test:e2e:update-webdriver'], (done) => {
     server: serverConfig,
     open: false,
     ui: false,
-    logPrefix: 'E2E'
+    logPrefix: 'E2E',
+    // https://github.com/angular/protractor/issues/2473#issuecomment-146751520
+    scrollRestoreTechnique: 'cookie'
   }, runProtractor)
 })
 
@@ -212,7 +215,6 @@ gulp.task('rev', ['browserify', 'sass'], () => {
     .pipe(gulp.dest('./dist'))
     .pipe(rev.manifest())
     .pipe(gulp.dest('./dist'))
-    //.pipe(del(sources))
 })
 
 gulp.task('rev-replace', ['rev'], () => {

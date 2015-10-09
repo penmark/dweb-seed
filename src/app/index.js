@@ -15,4 +15,6 @@ const app = angular.module('dweb', [
   main, templates, componentModule
 ])
 
+angular.bootstrap(document, ['dweb'], {strictDi: true})
+
 export default app
