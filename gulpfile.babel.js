@@ -77,8 +77,8 @@ gulp.task('watchify', ['templatecache'], () => compile(true))
 
 gulp.task('templatecache', ['jade'], () => {
   return gulp.src('./.tmp/templates/**/*.html')
-    .pipe(templateCache('index.js', {standalone: true, module: 'dweb.templates'}))
-    .pipe(header('"use strict"\nimport angular from "angular"\nexport default "dweb.templates"\n'))
+    .pipe(templateCache('index.js', {standalone: true, module: 'nyawebben.templates'}))
+    .pipe(header('"use strict"\nimport angular from "angular"\nexport default "nyawebben.templates"\n'))
     .pipe(gulp.dest('./src/app/templates'))
 })
 

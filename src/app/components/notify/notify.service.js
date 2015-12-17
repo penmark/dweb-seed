@@ -2,7 +2,7 @@
 const messageService = /*@ngInject*/ ($rootScope, $log) => {
   const notify = (level, message, title, timeout) => {
     $log.debug('notify', 'level:', level, 'message:', message, 'title:', title, 'timeout:', timeout)
-    $rootScope.$emit('dweb.notify', {level: level, message: message, title: title, timeout: timeout})
+    $rootScope.$emit('nyawebben.notify', {level: level, message: message, title: title, timeout: timeout})
   }
   return {
     warning: (message, title=null, timeout=3) => {

@@ -1,13 +1,13 @@
-import config from './main.config'
-import run from './main.run'
+import mainRun from './main.run'
+import mainConfig from './main.config'
 import stateConfig from './main.states'
 import constants from './main.constants'
 import angular from 'angular'
-const mainModule = 'dweb.main'
+const mainModule = 'nyawebben.main'
 const m = angular.module(mainModule, [])
-  .config(config)
+  .config(mainConfig)
   .config(stateConfig)
-  .run(run)
+  .run(mainRun)
 constants.forEach(constant => m.constant(...constant))
 export default mainModule
 

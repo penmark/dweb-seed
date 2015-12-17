@@ -1,5 +1,5 @@
-var runBlock = /*@ngInject*/ ($log) => {
+const mainRun = /*@ngInject*/ ($log) => {
   "use strict";
   $log.debug('Runblock')
 }
-export default runBlock
+export default mainRun

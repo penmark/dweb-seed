@@ -1,4 +1,4 @@
-.dweb-notify.alert.alert-dismissable(role='alert' ng-class="notifyClass(message.level)")
+.notify.alert.alert-dismissable(role='alert' ng-class="notifyClass(message.level)")
   button(type="button", class="close", ng-click="dismiss()") &times;
   strong(ng-if="message.title") {{message.title}} 
   | {{message.message}}

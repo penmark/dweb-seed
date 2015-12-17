@@ -8,7 +8,7 @@ import emailDirective from './email.directive'
 import userService from './user.service'
 import angular from 'angular'
 
-const userModule = 'dweb.user'
+const userModule = 'nyawebben.user'
 angular.module(userModule, [])
   .controller('usersCtrl', usersCtrl)
   .controller('userCtrl', userCtrl)

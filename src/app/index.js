@@ -10,11 +10,11 @@ import main from './main'
 import componentModule from './components'
 
 
-const app = angular.module('dweb', [
+const app = angular.module('nyawebben', [
   uiRouter, uiBootstrap, ngAnimate, ngResource,
   main, templates, componentModule
 ])
 
-angular.bootstrap(document, ['dweb'], {strictDi: true})
+angular.bootstrap(document, ['nyawebben'], {strictDi: true})
 
 export default app

@@ -1,4 +1,4 @@
-var mainConfig = /*@ngInject*/ ($logProvider) => {
+const mainConfig = /*@ngInject*/ ($logProvider) => {
   "use strict";
   $logProvider.debugEnabled(true)
 }

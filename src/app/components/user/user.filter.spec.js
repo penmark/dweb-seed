@@ -1,7 +1,7 @@
 'use strict'
 const module = angular.mock.module
 describe('dummyFilter', () => {
-  beforeEach(module('dweb.user'))
+  beforeEach(module('nyawebben.user'))
   let filter
   beforeEach(inject(($filter) => {
     filter = $filter

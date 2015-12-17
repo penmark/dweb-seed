@@ -7,7 +7,7 @@ class Index {
     this.notifyText = this.panel.element(by.model('vm.message'))
     this.notifyTimeout = this.panel.element(by.model('vm.timeout'))
     this.errorButton = this.panel.element(by.css('.btn-danger'))
-    this.notification = element(by.css('.dweb-notify'))
+    this.notification = element(by.css('.notify'))
   }
 }
 

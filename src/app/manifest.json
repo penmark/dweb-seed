@@ -1,6 +1,6 @@
 {
-  "name": "NyA Department Web",
-  "short_name": "DWEB",
+  "name": "NyAWebben",
+  "short_name": "nweb",
   "icons": [{}],
   "start_url": "/index.html",
   "display": "standalone"

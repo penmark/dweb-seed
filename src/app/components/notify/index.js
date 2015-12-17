@@ -2,7 +2,7 @@ import service from './notify.service'
 import directive from './notify.directive'
 import angular from 'angular'
 
-const moduleName = 'dweb.notify'
+const moduleName = 'nyawebben.notify'
 
 angular.module(moduleName, [])
   .factory('notify', service)

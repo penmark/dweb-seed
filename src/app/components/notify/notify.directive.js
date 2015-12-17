@@ -20,7 +20,7 @@ const notifyDirective = /*@ngInject*/ ($log, $rootScope, $templateCache, $compil
         })
       }
 
-      $rootScope.$on('dweb.notify', (e, message) => {
+      $rootScope.$on('nyawebben.notify', (e, message) => {
         let notifyElem
         scope.message = message
         scope.dismiss = () => dismiss(notifyElem)

@@ -3,8 +3,8 @@
 const module = angular.mock.module
 
 describe('userDirective', () => {
-  beforeEach(module('dweb.user'))
-  beforeEach(module('dweb.templates'))
+  beforeEach(module('nyawebben.user'))
+  beforeEach(module('nyawebben.templates'))
   let compile, scope
 
   beforeEach(inject(($compile, $rootScope) => {
