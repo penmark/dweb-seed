@@ -5,7 +5,7 @@
     "babelify": "^6.3.0",
     "browser-sync": "^2.9.6",
     "browserify": "^11.2.0",
-    "browserify-ngannotate": "^1.0.1",
+    "browserify-ngannotate": "^2.0.0",
     "connect-history-api-fallback": "^1.1.0",
     "connect-modrewrite": "^0.8.2",
     "del": "^2.0.2",

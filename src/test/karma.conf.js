@@ -13,7 +13,8 @@ module.exports = function (config) {
     browserify: {
       debug: true,
       transform: [
-        'babelify'
+        'babelify',
+        'browserify-ngannotate'
         //*, istanbul({
         //  instrumenter: isparta,
         //  ignore: ['**/node_modules/**', '**/test/**']
